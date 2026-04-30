@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Results | Time2Result</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#131b2e",
+                        "on-surface-variant": "#434655",
+                        "primary-fixed": "#dbe1ff",
+                        "secondary-container": "#fd761a",
+                        "on-primary-container": "#eeefff",
+                        "on-primary": "#ffffff",
+                        "primary": "#004ac6",
+                        "surface": "#faf8ff",
+                        "primary-container": "#2563eb",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f2f3ff",
+                        "outline-variant": "#c3c6d7",
+                        "secondary": "#9d4300"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "section-gap": "64px",
+                        "stack-lg": "24px",
+                        "gutter": "24px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Inter"],
+                        "headline-lg": ["Lexend"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Lexend"],
+                        "data-mono": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1; }
+        
+        .nav-link { position: relative; text-decoration: none; padding-bottom: 4px; }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%;
+            background-color: theme('colors.primary'); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%); border-radius: 2px;
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        
+        .hover-lift { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease; }
+        .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -12px rgba(0,74,198,0.15); }
+        
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+
+    <!-- Top Navigation Anchor -->
+    <header class="bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm border-b border-slate-100 dark:border-slate-800 shadow-sm sticky top-0 z-50">
+        <div class="flex items-center justify-between px-6 h-20 max-w-[1280px] mx-auto">
+            <!-- LOGO IMAGE ONLY -->
+            <a href="index.html" class="flex items-center group">
+                <img src="assets/images/logo11 (1).png" alt="Time2Result Logo" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/200x48/004ac6/ffffff?text=Time2Result';" />
+            </a>
+            <nav class="hidden md:flex items-center gap-8 font-lexend text-sm font-medium tracking-normal">
+                <a class="nav-link text-slate-600 hover:text-primary transition-colors" href="index.html">Home</a>
+                <a class="nav-link text-slate-600 hover:text-primary transition-colors" href="events.html">Events</a>
+                <a class="nav-link active text-primary" href="results.html">Results</a>
+                <a class="nav-link text-slate-600 hover:text-primary transition-colors" href="about.html">About</a>
+                <a class="nav-link text-slate-600 hover:text-primary transition-colors" href="services.html">Services</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button class="font-lexend text-sm font-medium text-slate-600 hover:text-primary transition-all active:scale-95">Sign In</button>
+                <button class="bg-primary text-white px-6 py-2 rounded-lg font-lexend text-sm font-medium hover:bg-primary-container transition-all active:scale-95 shadow-md">Register</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-[1280px] mx-auto px-6 py-section-gap w-full">
+        <!-- Search Container -->
+        <div class="relative z-40 mb-stack-lg reveal">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white p-2 rounded-2xl shadow-sm flex items-center gap-2 border border-outline-variant/50 focus-within:border-primary transition-colors hover-lift">
+                    <div class="flex items-center gap-3 pl-6 flex-grow group">
+                        <span class="material-symbols-outlined text-outline group-focus-within:text-primary transition-colors">search</span>
+                        <input class="w-full border-none focus:ring-0 bg-transparent text-body-md font-body-md text-on-surface outline-none" placeholder="Search athlete name, bib number, or event..." type="text"/>
+                    </div>
+                    <button class="bg-primary hover:bg-primary-container text-white px-8 py-3 rounded-xl font-headline-md text-label-lg transition-all active:scale-95 shadow-sm">
+                        Find Results
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <section class="flex flex-col md:flex-row items-center justify-between gap-gutter mb-12 reveal delay-100">
+            <div class="flex flex-wrap items-center gap-stack-md w-full md:w-auto">
+                <div class="flex flex-col gap-1 w-full md:w-72">
+                    <label class="font-label-md text-label-md text-outline px-1">Select Event</label>
+                    <div class="relative hover-lift">
+                        <select class="appearance-none w-full bg-white border border-outline-variant/50 rounded-xl px-4 py-3 font-label-lg text-on-surface focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all cursor-pointer">
+                            <option>Chennai City Marathon</option>
+                            <option>Coastal Tri-Series</option>
+                            <option>Southern Stadium Run</option>
+                        </select>
+                        <span class="material-symbols-outlined absolute right-3 top-3.5 pointer-events-none text-outline">expand_more</span>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 w-full md:w-32">
+                    <label class="font-label-md text-label-md text-outline px-1">Year</label>
+                    <div class="relative hover-lift">
+                        <select class="appearance-none w-full bg-white border border-outline-variant/50 rounded-xl px-4 py-3 font-label-lg text-on-surface focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all cursor-pointer">
+                            <option>2024</option>
+                            <option>2023</option>
+                            <option>2022</option>
+                        </select>
+                        <span class="material-symbols-outlined absolute right-3 top-3.5 pointer-events-none text-outline">calendar_today</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-2">
+                <span class="inline-flex items-center gap-2 bg-green-50 text-green-700 border border-green-200 px-4 py-2 rounded-full font-label-lg mt-6 md:mt-0 shadow-sm hover-lift">
+                    <span class="material-symbols-outlined filled text-[18px]">verified</span> Certified Timing
+                </span>
+            </div>
+        </section>
+
+        <!-- Results Table Card -->
+        <section class="bg-white rounded-[1.5rem] border border-outline-variant/50 shadow-sm overflow-hidden mb-section-gap reveal delay-200 hover-lift">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[800px]">
+                    <thead>
+                        <tr class="bg-slate-50 border-b border-outline-variant/50">
+                            <th class="px-gutter py-4 font-label-lg text-outline uppercase tracking-wider w-24">Rank</th>
+                            <th class="px-gutter py-4 font-label-lg text-outline uppercase tracking-wider">Athlete Name</th>
+                            <th class="px-gutter py-4 font-label-lg text-outline uppercase tracking-wider text-center w-32">Bib</th>
+                            <th class="px-gutter py-4 font-label-lg text-outline uppercase tracking-wider text-center w-48">Category</th>
+                            <th class="px-gutter py-4 font-label-lg text-outline uppercase tracking-wider text-right w-48">Finish Time</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-outline-variant/30">
+                        <!-- Winner Row -->
+                        <tr class="hover:bg-blue-50/50 transition-colors cursor-pointer group">
+                            <td class="px-gutter py-6">
+                                <div class="flex items-center gap-2">
+                                    <span class="font-data-mono text-primary text-body-lg font-bold">01</span>
+                                    <span class="material-symbols-outlined filled text-yellow-500 group-hover:scale-110 transition-transform">workspace_premium</span>
+                                </div>
+                            </td>
+                            <td class="px-gutter py-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full overflow-hidden bg-slate-200 border-2 border-transparent group-hover:border-primary transition-colors">
+                                        <img class="w-full h-full object-cover" alt="Athlete" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmM3xrKTvKiJqDeqbGauzGVFujo05z4wpbhUU3h2z033S9ri5bvo8HofZOcgHpdRljFaNlMKAdgVejIDQXM3n8eJ2LmqqvL1OzbA3QFnR-Y_AV5KhzTrHWZHB-VEPLgVZCKC_84orbA4gIBLroUnQ26FLN2eJWjsYIKlJjJD1-VqG4aZ6YvjjJzSC9_hyEjWLqjaT6qnzqqrQpYh1FKLgY8HSrIiBvnw_JS3VD0wOm8Zrj_gWIsh1kcjujaG00eIj-O7OwXxmHp7ZW"/>
+                                    </div>
+                                    <span class="font-headline-md text-on-surface group-hover:text-primary transition-colors">Marcus Henderson</span>
+                                </div>
+                            </td>
+                            <td class="px-gutter py-6 text-center font-data-mono text-outline">1024</td>
+                            <td class="px-gutter py-6 text-center">
+                                <span class="bg-slate-100 text-on-surface-variant px-3 py-1 rounded-full font-label-md">Elite Male</span>
+                            </td>
+                            <td class="px-gutter py-6 text-right">
+                                <span class="font-data-mono text-display-lg text-2xl text-on-surface font-bold">02:12:44</span>
+                            </td>
+                        </tr>
+                        
+                        <!-- Second Row -->
+                        <tr class="hover:bg-blue-50/50 transition-colors cursor-pointer group">
+                            <td class="px-gutter py-6">
+                                <span class="font-data-mono text-on-surface-variant text-body-lg ml-1 font-bold">02</span>
+                            </td>
+                            <td class="px-gutter py-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full overflow-hidden bg-slate-200 border-2 border-transparent group-hover:border-primary transition-colors">
+                                        <img class="w-full h-full object-cover" alt="Athlete" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAxIWDbz7K7K8f1aHFvVTawQMhyY0h8GqA35SdTGQJmiEsr8CUD5KbAHX8XckXF0p0IWiN1sRALITlHuF2T-1PFoP4nRh3oTBrUCAnffXeVXj3uxfHvb6H6xCzGRRTae_FpcVFtS_pNjPs4SI8QbVUhbll2qsAFgXKrpCrselRgJdPz6t7pCGqfvU9h5CYi74m15AQHqrf9SMn5pYvCF1H5GPww4gyzSpa2wdlim9U3kEvp6zQQdfgP4rVc6EADsPjVZE5PWQrJ8Vf"/>
+                                    </div>
+                                    <span class="font-headline-md text-on-surface group-hover:text-primary transition-colors">Sarah Jenkins</span>
+                                </div>
+                            </td>
+                            <td class="px-gutter py-6 text-center font-data-mono text-outline">0982</td>
+                            <td class="px-gutter py-6 text-center">
+                                <span class="bg-slate-100 text-on-surface-variant px-3 py-1 rounded-full font-label-md">Elite Female</span>
+                            </td>
+                            <td class="px-gutter py-6 text-right">
+                                <span class="font-data-mono text-display-lg text-2xl text-on-surface font-bold">02:14:12</span>
+                            </td>
+                        </tr>
+
+                        <!-- Third Row -->
+                        <tr class="hover:bg-blue-50/50 transition-colors cursor-pointer group">
+                            <td class="px-gutter py-6">
+                                <span class="font-data-mono text-on-surface-variant text-body-lg ml-1 font-bold">03</span>
+                            </td>
+                            <td class="px-gutter py-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-slate-100 border-2 border-transparent group-hover:border-primary transition-colors flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-outline">person</span>
+                                    </div>
+                                    <span class="font-headline-md text-on-surface group-hover:text-primary transition-colors">David Chen</span>
+                                </div>
+                            </td>
+                            <td class="px-gutter py-6 text-center font-data-mono text-outline">1544</td>
+                            <td class="px-gutter py-6 text-center">
+                                <span class="bg-slate-100 text-on-surface-variant px-3 py-1 rounded-full font-label-md">Masters 40+</span>
+                            </td>
+                            <td class="px-gutter py-6 text-right">
+                                <span class="font-data-mono text-display-lg text-2xl text-on-surface font-bold">02:16:59</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="px-gutter py-6 bg-slate-50 border-t border-outline-variant/50 flex flex-col md:flex-row items-center justify-between gap-4">
+                <span class="text-label-md text-outline">Showing 1-10 of 2,450 athletes</span>
+                <div class="flex items-center gap-2">
+                    <button class="p-2 rounded-lg border border-outline-variant/50 text-outline hover:bg-white transition-colors">
+                        <span class="material-symbols-outlined text-sm">chevron_left</span>
+                    </button>
+                    <button class="w-8 h-8 rounded-lg bg-primary text-white font-label-lg shadow-sm">1</button>
+                    <button class="w-8 h-8 rounded-lg text-on-surface-variant hover:bg-white font-label-lg transition-colors border border-transparent hover:border-outline-variant/50">2</button>
+                    <button class="w-8 h-8 rounded-lg text-on-surface-variant hover:bg-white font-label-lg transition-colors border border-transparent hover:border-outline-variant/50">3</button>
+                    <span class="px-2 text-outline">...</span>
+                    <button class="p-2 rounded-lg border border-outline-variant/50 text-outline hover:bg-white transition-colors">
+                        <span class="material-symbols-outlined text-sm">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 pt-20 pb-8 text-slate-300 mt-auto">
+        <div class="max-w-[1280px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div class="flex flex-col gap-6 md:col-span-2">
+                <a href="index.html" class="inline-block hover:opacity-80 transition-opacity">
+                    <!-- LOGO IMAGE IN FOOTER -->
+                    <img src="assets/images/logo11 (1).png" alt="Time2Result Logo" class="h-14 w-auto object-contain bg-white rounded-lg p-2" onerror="this.onerror=null; this.src='https://placehold.co/200x60/ffffff/004ac6?text=Time2Result';" />
+                </a>
+                <p class="text-slate-400 leading-relaxed max-w-md">
+                    Time To Result Solutions provides END to END race timing solutions and event management services in Chennai.
+                </p>
+                <div class="flex flex-col gap-2 mt-2 font-medium">
+                    <p class="flex items-start gap-3"><span class="material-symbols-outlined text-primary">location_on</span><span>1st Floor, 12/1, Sangam School Street,<br/>Venkatapuram, Ambattur, Chennai – 53</span></p>
+                    <p class="flex items-center gap-3 mt-2"><span class="material-symbols-outlined text-primary">mail</span><a href="mailto:info@time2result.com" class="hover:text-white transition-colors">info@time2result.com</a></p>
+                    <p class="flex items-center gap-3"><span class="material-symbols-outlined text-primary opacity-0">mail</span><a href="mailto:time2resultindia@gmail.com" class="hover:text-white transition-colors">time2resultindia@gmail.com</a></p>
+                    <p class="flex items-center gap-3 mt-2"><span class="material-symbols-outlined text-primary">phone</span><a href="tel:+919363024240" class="hover:text-white transition-colors">+91 93630 24240</a> <span class="text-slate-600">/</span> <a href="tel:+918248868900" class="hover:text-white transition-colors">+91 82488 68900</a></p>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-bold text-lg mb-6 uppercase tracking-wider">Quick Links</h4>
+                <div class="flex flex-col gap-4 font-medium">
+                    <a class="hover:text-primary transition-colors flex items-center gap-2 group" href="index.html"><span class="material-symbols-outlined text-sm opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">chevron_right</span> Home</a>
+                    <a class="hover:text-primary transition-colors flex items-center gap-2 group" href="events.html"><span class="material-symbols-outlined text-sm opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">chevron_right</span> Events</a>
+                    <a class="hover:text-primary transition-colors flex items-center gap-2 group" href="results.html"><span class="material-symbols-outlined text-sm opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">chevron_right</span> Results</a>
+                    <a class="hover:text-primary transition-colors flex items-center gap-2 group" href="about.html"><span class="material-symbols-outlined text-sm opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">chevron_right</span> About Us</a>
+                    <a class="hover:text-primary transition-colors flex items-center gap-2 group" href="services.html"><span class="material-symbols-outlined text-sm opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">chevron_right</span> Services</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold text-lg mb-6 uppercase tracking-wider">Connect With Us</h4>
+                <div class="flex gap-4">
+                    <a href="#" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300" title="Facebook"><span class="material-symbols-outlined">thumb_up</span></a>
+                    <a href="#" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-green-500 hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300" title="Whatsapp"><span class="material-symbols-outlined">chat</span></a>
+                    <a href="#" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-pink-600 hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300" title="Instagram"><span class="material-symbols-outlined">photo_camera</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-[1280px] mx-auto px-6 pt-8 border-t border-slate-800 text-center flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm">© 2024 Time To Result Solutions. All Rights Reserved.</p>
+            <div class="flex gap-6 text-sm">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Reveal JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
