@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>SPORTIFI | Elite Sports Timing</title>
+    <title>Time2Result | Elite Sports Timing & Event Management</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
@@ -111,6 +111,18 @@
         .hero-gradient {
             background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.1) 100%);
         }
+        /* Smooth Hover Animations */
+        .nav-link { position: relative; text-decoration: none; padding-bottom: 4px; }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%;
+            background-color: theme('colors.primary'); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%); border-radius: 2px;
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        
+        .hover-lift { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease; }
+        .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -12px rgba(0,74,198,0.15); }
+        
         /* Scroll Reveal Animation Classes */
         .reveal {
             opacity: 0;
@@ -126,19 +138,23 @@
 <body class="bg-background text-on-surface font-body-md overflow-x-hidden">
 
     <!-- TopNavBar -->
-    <header class="bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm border-b border-slate-100 dark:border-slate-800 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] sticky top-0 z-50">
+    <header class="bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm border-b border-slate-100 dark:border-slate-800 shadow-sm sticky top-0 z-50">
         <div class="flex items-center justify-between px-6 h-20 max-w-[1280px] mx-auto">
-            <div class="text-2xl font-black tracking-tighter text-slate-900 dark:text-white uppercase font-headline-lg">SPORTIFI</div>
+            <!-- Logo Image ONLY (Text Removed) -->
+            <a href="index.html" class="flex items-center group">
+                <img src="assets/images/logo11 (1).png" alt="Time2Result Logo" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/200x48/004ac6/ffffff?text=Time2Result';" />
+            </a>
+
             <nav class="hidden md:flex items-center gap-8 font-lexend text-sm font-medium tracking-normal">
-                <a class="text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 pb-1" href="index.html">Home</a>
-                <a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200" href="events.html">Events</a>
-                <a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200" href="results.html">Results</a>
-                <a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200" href="#about">About</a>
-                <a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200" href="#services">Services</a>
+                <a class="nav-link active text-primary" href="index.html">Home</a>
+                <a class="nav-link text-slate-600 hover:text-primary transition-colors" href="events.html">Events</a>
+                <a class="nav-link text-slate-600 hover:text-primary transition-colors" href="results.html">Results</a>
+                <a class="nav-link text-slate-600 hover:text-primary transition-colors" href="about.html">About</a>
+                <a class="nav-link text-slate-600 hover:text-primary transition-colors" href="services.html">Services</a>
             </nav>
             <div class="flex items-center gap-4">
-                <button class="font-lexend text-sm font-medium text-slate-600 hover:text-blue-600 transition-all active:scale-95">Sign In</button>
-                <button class="bg-primary text-white px-6 py-2 rounded-lg font-lexend text-sm font-medium hover:bg-primary-container hover:text-primary transition-all active:scale-95 shadow-lg shadow-blue-200">Register</button>
+                <button class="font-lexend text-sm font-medium text-slate-600 hover:text-primary transition-all active:scale-95">Sign In</button>
+                <button class="bg-primary-container text-white px-6 py-2 rounded-lg font-lexend text-sm font-medium hover:bg-primary transition-all active:scale-95 shadow-md">Register</button>
             </div>
         </div>
     </header>
@@ -147,10 +163,10 @@
         <!-- Section 1: Hero Banner Slider -->
         <section class="relative w-full h-[640px] overflow-hidden bg-slate-900">
             <div class="absolute inset-0 z-10 hero-gradient"></div>
-            <img alt="marathon runners" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbEDQ92W-FF-t8i7gSiedDCj-KhmFP-_PiNy5Mfs7Y9dYho0uJUABKos-4_vK9gdik24K82NZy4o_bJyPs5nDj5J7gsZRPBAF9D6XCt7VRuRFUDyPK-zR0li3SAonpadsgcakzXq6gQWZj0nfkWr4Q9DQjztpvaRDyGfgsf1AhmsRvJymbj4c1SLMpr_Ge05SHow1xJfxrLbdN7hTQ5vaamIfIxabnXJCNS_KEm9B6WsSQCGiEJTcLO1up7gk_Xd0RemQO3YFsKp3R" />
+            <img alt="marathon runners" class="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-[10s]" src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" />
             <div class="relative z-20 h-full flex flex-col items-center justify-center text-center px-6">
-                <h1 class="font-display-lg text-display-lg text-white mb-stack-md max-w-3xl reveal">Precise Timing for Elite Performance</h1>
-                <p class="font-body-lg text-white/90 max-w-2xl reveal delay-100">Real-time tracking and professional results for the world's most prestigious endurance events.</p>
+                <h1 class="font-display-lg text-display-lg text-white mb-stack-md max-w-4xl reveal leading-tight">END to END Race Timing & Event Management</h1>
+                <p class="font-body-lg text-white/90 max-w-2xl reveal delay-100">Professional chip timing and full-scale venue production for elite competitions worldwide.</p>
                 <div class="flex gap-stack-sm mt-stack-lg reveal delay-200">
                     <div class="w-12 h-1.5 bg-white rounded-full"></div>
                     <div class="w-3 h-1.5 bg-white/40 rounded-full"></div>
@@ -161,11 +177,11 @@
 
         <!-- Section 2: Floating Search Box -->
         <section class="relative z-30 -mt-24 px-6">
-            <div class="max-w-[1000px] mx-auto bg-white rounded-xl shadow-[0_16px_32px_-4px_rgba(15,23,42,0.1)] p-stack-lg border border-slate-100 reveal">
+            <div class="max-w-[1000px] mx-auto bg-white rounded-xl shadow-[0_16px_32px_-4px_rgba(15,23,42,0.1)] p-stack-lg border border-slate-100 reveal hover-lift">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter items-end">
                     <div class="space-y-2">
                         <label class="font-label-lg text-on-surface-variant block">Year</label>
-                        <select class="w-full h-12 px-4 rounded-lg border border-outline-variant bg-surface focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none font-body-md">
+                        <select class="w-full h-12 px-4 rounded-lg border border-outline-variant bg-surface focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none font-body-md transition-all">
                             <option>2024</option>
                             <option>2023</option>
                             <option>2022</option>
@@ -173,13 +189,13 @@
                     </div>
                     <div class="space-y-2">
                         <label class="font-label-lg text-on-surface-variant block">Event Name</label>
-                        <input class="w-full h-12 px-4 rounded-lg border border-outline-variant bg-surface focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none font-body-md" placeholder="e.g. City Marathon" type="text" />
+                        <input class="w-full h-12 px-4 rounded-lg border border-outline-variant bg-surface focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none font-body-md transition-all" placeholder="e.g. City Marathon" type="text" />
                     </div>
                     <div class="space-y-2">
                         <label class="font-label-lg text-on-surface-variant block">Bib or Name</label>
-                        <input class="w-full h-12 px-4 rounded-lg border border-outline-variant bg-surface focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none font-body-md" placeholder="Search athlete..." type="text" />
+                        <input class="w-full h-12 px-4 rounded-lg border border-outline-variant bg-surface focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none font-body-md transition-all" placeholder="Search athlete..." type="text" />
                     </div>
-                    <button onclick="window.location.href='results.html';" class="w-full h-12 bg-secondary-container text-white font-label-lg rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2 active:scale-95 shadow-lg shadow-orange-500/20">
+                    <button onclick="window.location.href='results.html';" class="w-full h-12 bg-secondary-container text-white font-label-lg rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2 active:scale-95 shadow-md">
                         <span class="material-symbols-outlined">search</span> FIND RESULTS
                     </button>
                 </div>
@@ -193,131 +209,104 @@
                     <span class="font-label-lg text-secondary uppercase tracking-widest block mb-2">Competition Hub</span>
                     <h2 class="font-headline-lg text-headline-lg text-on-surface">Recent & Live Events</h2>
                 </div>
-                <button onclick="window.location.href='events.html';" class="font-label-lg text-primary flex items-center gap-2 hover:underline">
+                <button onclick="window.location.href='events.html';" class="font-label-lg text-primary flex items-center gap-2 hover:underline transition-all">
                     View All Events <span class="material-symbols-outlined text-sm">arrow_forward</span>
                 </button>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
                 <!-- Event Card 1 -->
-                <div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(15,23,42,0.06)] group hover:shadow-[0_16px_32px_rgba(15,23,42,0.08)] transition-all reveal">
+                <div class="bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant/30 transition-all hover-lift group reveal">
                     <div class="h-48 relative overflow-hidden">
-                        <img alt="athletes running" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeNWJzQhWQU3CYTJgc6RXgs3KY9CtobVgV3gH1N69WFKBRfrc5c4Vf6D2CfYKx5p_SyLzF6JYHP34qn4ibCsFSdYpc93Lmx0GSsiMTAc_UP1snejC0vRuP8Mi9v-2ptBoPX1ayXLOq2dZSFo0kIUgIJKEwhxFOTF4Lq7m4FO60NqMLB6FGsf_r2aGklGF0S-IPv0RxwnOrYvjz_1CiSJ_3F9VMg_ZMRHGDhAD6nTv3E3huXlEuCn0u7HtCHdvWC6mZev_6UVdFxBaR" />
-                        <div class="absolute top-4 right-4 bg-secondary-container text-white px-3 py-1 rounded-full font-label-md flex items-center gap-1">
-                            <span class="material-symbols-outlined filled text-xs">sensors</span> LIVE
+                        <img alt="athletes running" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeNWJzQhWQU3CYTJgc6RXgs3KY9CtobVgV3gH1N69WFKBRfrc5c4Vf6D2CfYKx5p_SyLzF6JYHP34qn4ibCsFSdYpc93Lmx0GSsiMTAc_UP1snejC0vRuP8Mi9v-2ptBoPX1ayXLOq2dZSFo0kIUgIJKEwhxFOTF4Lq7m4FO60NqMLB6FGsf_r2aGklGF0S-IPv0RxwnOrYvjz_1CiSJ_3F9VMg_ZMRHGDhAD6nTv3E3huXlEuCn0u7HtCHdvWC6mZev_6UVdFxBaR" />
+                        <div class="absolute top-4 right-4 bg-secondary-container text-white px-3 py-1 rounded-full font-label-md flex items-center gap-1 shadow-md">
+                            <span class="material-symbols-outlined filled text-xs animate-pulse">sensors</span> LIVE
                         </div>
                     </div>
                     <div class="p-stack-lg">
-                        <div class="text-on-surface-variant font-label-md mb-2">March 15, 2024 • London, UK</div>
-                        <h3 class="font-headline-md text-headline-md text-on-surface mb-stack-md">Royal Parks Half Marathon</h3>
+                        <div class="text-on-surface-variant font-label-md mb-2">March 15, 2024 • Chennai, IND</div>
+                        <h3 class="font-headline-md text-headline-md text-on-surface mb-stack-md group-hover:text-primary transition-colors">Chennai City Marathon</h3>
                         <div class="flex items-center gap-4 border-t border-slate-100 pt-stack-md">
-                            <button onclick="window.location.href='results.html';" class="flex-1 bg-primary text-white font-label-lg py-3 rounded-lg hover:bg-primary-container hover:text-primary transition-all active:scale-95">View Result</button>
+                            <button onclick="window.location.href='results.html';" class="flex-1 bg-primary text-white font-label-lg py-3 rounded-lg hover:bg-primary-container transition-all active:scale-95 shadow-sm">View Result</button>
                         </div>
                     </div>
                 </div>
                 <!-- Event Card 2 -->
-                <div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(15,23,42,0.06)] group hover:shadow-[0_16px_32px_rgba(15,23,42,0.08)] transition-all reveal delay-100">
+                <div class="bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant/30 transition-all hover-lift group reveal delay-100">
                     <div class="h-48 relative overflow-hidden">
-                        <img alt="exhausted runner" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_IZn7sOfSlV6aeoTec5FDpks8RW43iTyKtgGFe_BoJY_tPwy6zUAVo5kbGAEm4M1GjpNQfBo9mosbLQ2869Es40ibJkip7EO7uwPuV812_WkE-0fWiy-rdigxeuoFNWe7XzZvG-SyQmwxdjOgaDEnYI0hOmWBrCgQcnbVWTsIQHFsbfV2pJXvNKyjSUro2ftoo36a_Aqm03-0gNY7K_BA1vvwzYqp9_wTlZK3r8xYx01QBRUswpbPc3drVGncjePjJA3gEz1qILiM" />
-                        <div class="absolute top-4 right-4 bg-tertiary-container text-tertiary px-3 py-1 rounded-full font-label-md">
+                        <img alt="exhausted runner" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_IZn7sOfSlV6aeoTec5FDpks8RW43iTyKtgGFe_BoJY_tPwy6zUAVo5kbGAEm4M1GjpNQfBo9mosbLQ2869Es40ibJkip7EO7uwPuV812_WkE-0fWiy-rdigxeuoFNWe7XzZvG-SyQmwxdjOgaDEnYI0hOmWBrCgQcnbVWTsIQHFsbfV2pJXvNKyjSUro2ftoo36a_Aqm03-0gNY7K_BA1vvwzYqp9_wTlZK3r8xYx01QBRUswpbPc3drVGncjePjJA3gEz1qILiM" />
+                        <div class="absolute top-4 right-4 bg-tertiary-container text-white px-3 py-1 rounded-full font-label-md shadow-md">
                             Registration Open
                         </div>
                     </div>
                     <div class="p-stack-lg">
-                        <div class="text-on-surface-variant font-label-md mb-2">April 02, 2024 • Berlin, DE</div>
-                        <h3 class="font-headline-md text-headline-md text-on-surface mb-stack-md">Berlin Sprint 10K Series</h3>
+                        <div class="text-on-surface-variant font-label-md mb-2">April 02, 2024 • Bangalore, IND</div>
+                        <h3 class="font-headline-md text-headline-md text-on-surface mb-stack-md group-hover:text-primary transition-colors">Southern Stadium Run</h3>
                         <div class="flex items-center gap-4 border-t border-slate-100 pt-stack-md">
-                            <button onclick="window.location.href='results.html';" class="flex-1 bg-primary text-white font-label-lg py-3 rounded-lg hover:bg-primary-container hover:text-primary transition-all active:scale-95">View Result</button>
+                            <button onclick="window.location.href='results.html';" class="flex-1 bg-primary text-white font-label-lg py-3 rounded-lg hover:bg-primary-container transition-all active:scale-95 shadow-sm">View Result</button>
                         </div>
                     </div>
                 </div>
                 <!-- Event Card 3 -->
-                <div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(15,23,42,0.06)] group hover:shadow-[0_16px_32px_rgba(15,23,42,0.08)] transition-all reveal delay-200">
+                <div class="bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant/30 transition-all hover-lift group reveal delay-200">
                     <div class="h-48 relative overflow-hidden">
-                        <img alt="cycling peloton" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_5ImvLrLp1FD3ZvM4M3UtY0e7gEdQy2OplayzK9VYYowxd2Xrj9SncmBrCqsLEQUflitpDibcpAnR7REzSGK4tyOSXfFCRlCLKhvT_dqqSyGg-hK0jdrG7nIPUPViv-Om8vW5f1zm1P5YRdnQ-Dvf9XXUCo4qSClFtCc25DV99bEzfutZm65vjEF6MlhH5cb0DBcRCCT-VEIptWkyN6QFR3b5Ah-bVNy1XBbmSoaRnsC7vAV90SEQJYP8vCwx350hggvrnM84Iw8A" />
-                        <div class="absolute top-4 right-4 bg-outline text-white px-3 py-1 rounded-full font-label-md">
+                        <img alt="cycling peloton" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_5ImvLrLp1FD3ZvM4M3UtY0e7gEdQy2OplayzK9VYYowxd2Xrj9SncmBrCqsLEQUflitpDibcpAnR7REzSGK4tyOSXfFCRlCLKhvT_dqqSyGg-hK0jdrG7nIPUPViv-Om8vW5f1zm1P5YRdnQ-Dvf9XXUCo4qSClFtCc25DV99bEzfutZm65vjEF6MlhH5cb0DBcRCCT-VEIptWkyN6QFR3b5Ah-bVNy1XBbmSoaRnsC7vAV90SEQJYP8vCwx350hggvrnM84Iw8A" />
+                        <div class="absolute top-4 right-4 bg-outline text-white px-3 py-1 rounded-full font-label-md shadow-md">
                             Completed
                         </div>
                     </div>
                     <div class="p-stack-lg">
-                        <div class="text-on-surface-variant font-label-md mb-2">March 08, 2024 • Cape Town, ZA</div>
-                        <h3 class="font-headline-md text-headline-md text-on-surface mb-stack-md">Coastal Classic Cycle Tour</h3>
+                        <div class="text-on-surface-variant font-label-md mb-2">March 08, 2024 • Kerala, IND</div>
+                        <h3 class="font-headline-md text-headline-md text-on-surface mb-stack-md group-hover:text-primary transition-colors">Coastal Tri-Series</h3>
                         <div class="flex items-center gap-4 border-t border-slate-100 pt-stack-md">
-                            <button onclick="window.location.href='results.html';" class="flex-1 bg-primary text-white font-label-lg py-3 rounded-lg hover:bg-primary-container hover:text-primary transition-all active:scale-95">View Result</button>
+                            <button onclick="window.location.href='results.html';" class="flex-1 bg-primary text-white font-label-lg py-3 rounded-lg hover:bg-primary-container transition-all active:scale-95 shadow-sm">View Result</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 4: Original About Section -->
-        <section class="py-section-gap bg-surface-container-low overflow-hidden">
-            <div class="max-w-[1280px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-section-gap items-center">
-                <div class="space-y-stack-lg reveal">
-                    <span class="font-label-lg text-primary uppercase tracking-widest">About EliteTiming</span>
-                    <h2 class="font-headline-lg text-display-lg text-on-surface leading-tight">Meticulous Precision for Every Second.</h2>
-                    <p class="font-body-lg text-on-surface-variant">We provide world-class event timing solutions using state-of-the-art RFID technology and real-time cloud analytics. From local charity runs to international marathons, we ensure every participant's journey is captured with 99.9% accuracy.</p>
-                    <div class="grid grid-cols-2 gap-stack-lg py-stack-md">
-                        <div>
-                            <div class="text-display-lg font-bold text-primary">500+</div>
-                            <div class="font-label-md text-on-surface-variant uppercase">Events Annually</div>
-                        </div>
-                        <div>
-                            <div class="text-display-lg font-bold text-primary">1.2M</div>
-                            <div class="font-label-md text-on-surface-variant uppercase">Athletes Timed</div>
-                        </div>
-                    </div>
-                    <button class="bg-on-surface text-white px-8 py-4 rounded-full font-label-lg hover:bg-on-surface-variant transition-all active:scale-95">Learn Our Technology</button>
-                </div>
-                <div class="relative reveal delay-200">
-                    <div class="absolute -top-12 -right-12 w-64 h-64 bg-primary-fixed-dim rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-                    <div class="absolute -bottom-12 -left-12 w-64 h-64 bg-secondary-fixed rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-                    <img alt="timing chip" class="relative z-10 rounded-[2.5rem] shadow-2xl shadow-slate-900/10 object-cover aspect-[4/5]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcI82pMo7bqFpdAhhrWNHfguGqma_zgdPnX8lJ4asSFtCGSaT9_Oq2UKcbEu20Kn79y4v08TomLBS3HySJizU6ACdCNQ55gmFkC-Z9ij3Ja4j46PxifpF1HbK6zqFJRhixjeb0qOi4erZpwZBN1Gsn1LNVqxgve6PqlilhHZPfBKGCA-tOtzk255jeuaCUXl2B485pHrG_HpZpSYl-Ipb8KadQVmS88-LoZMzeSBuBaHGnkKoXGLZ7x0jDnmDwKfv8_3l4Vte__-Ks" />
-                </div>
-            </div>
-        </section>
-
         <!-- ========================================== -->
-        <!-- NEW SECTIONS INTEGRATED & STYLED W/ TAILWIND -->
+        <!-- RESTORED SECTIONS STYLED W/ TAILWIND -->
         <!-- ========================================== -->
 
-        <!-- New About Extension (Stats & Icon Text) -->
+        <!-- About Extension (Stats & Icon Text) -->
         <section class="py-section-gap px-6 max-w-[1280px] mx-auto border-b border-slate-100">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-section-gap items-center">
                 
                 <!-- Stats Container -->
-                <div class="flex flex-col sm:flex-row gap-6 reveal">
+                <div class="flex flex-col sm:flex-row gap-6 reveal hover-lift">
                     <div class="flex-1 bg-primary/5 border border-primary/10 p-8 rounded-3xl text-center">
                         <span class="block text-display-lg font-black text-primary mb-2">99.9%</span>
                         <span class="font-label-lg text-on-surface-variant uppercase tracking-widest">Timing Accuracy</span>
                     </div>
                     <div class="flex-1 bg-secondary/5 border border-secondary/10 p-8 rounded-3xl text-center">
-                        <span class="block text-display-lg font-black text-secondary mb-2">95%</span>
-                        <span class="font-label-lg text-on-surface-variant uppercase tracking-widest">Book a Demo</span>
+                        <span class="block text-display-lg font-black text-secondary mb-2">360°</span>
+                        <span class="font-label-lg text-on-surface-variant uppercase tracking-widest">Event Production</span>
                     </div>
                 </div>
 
                 <!-- About Content -->
                 <div class="reveal delay-100">
                     <p class="font-body-lg text-on-surface-variant mb-8 leading-relaxed">
-                        Sportifi is built on the belief that sports deserve precision. We specialize in professional timing solutions for endurance sports—marathons, cycling, triathlons, and community events. Our technology combines <strong>accuracy, innovation, and speed,</strong> making us a trusted partner for organizers and athletes alike.
+                        Time To Result Solutions is built on the belief that sports deserve precision. Based in Chennai, we specialize in professional END to END race timing solutions and event management for endurance sports—marathons, cycling, triathlons, and stadium runs. Our technology combines <strong>accuracy, innovation, and speed,</strong> making us a trusted partner for organizers and athletes alike.
                     </p>
                     
                     <!-- Icon Group -->
                     <div class="flex flex-wrap gap-8">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-full bg-primary-container text-primary flex items-center justify-center">
+                        <div class="flex items-center gap-3 group">
+                            <div class="w-12 h-12 rounded-full bg-primary-container text-white flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <span class="material-symbols-outlined">trending_up</span>
                             </div>
                             <span class="font-label-lg text-on-surface">Analytics</span>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-full bg-tertiary-container text-tertiary flex items-center justify-center">
+                        <div class="flex items-center gap-3 group">
+                            <div class="w-12 h-12 rounded-full bg-tertiary-container text-white flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <span class="material-symbols-outlined">emoji_events</span>
                             </div>
                             <span class="font-label-lg text-on-surface">Excellence</span>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-full bg-secondary-container text-white flex items-center justify-center">
+                        <div class="flex items-center gap-3 group">
+                            <div class="w-12 h-12 rounded-full bg-secondary-container text-white flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <span class="material-symbols-outlined">groups</span>
                             </div>
                             <span class="font-label-lg text-on-surface">Community</span>
@@ -336,32 +325,32 @@
                     <div>
                         <h2 class="font-headline-lg text-display-lg text-on-surface mb-4">About Us</h2>
                         <p class="font-body-lg text-on-surface-variant">
-                            At Sportifi Timing, we are passionate about sports and technology. We specialize in delivering advanced race timing solutions that ensure every participant’s journey is tracked with precision and every organizer’s event runs seamlessly. Whether it’s a city half marathon, an ultra relay, or a community run, we bring global-standard timing technology to your race.
+                            At Time To Result Solutions, we provide END to END race timing solutions and event management services in Chennai. We use advanced disposable BIB Tags and Re-usable Tags to track every participant's journey with precision. From accurate route measurement to complete BIB expo management, we ensure your event runs seamlessly.
                         </p>
                     </div>
                     
-                    <div class="bg-surface-container p-6 rounded-2xl border-l-4 border-primary">
+                    <div class="bg-surface-container-low p-6 rounded-2xl border-l-4 border-primary shadow-sm">
                         <h3 class="font-headline-md text-on-surface mb-2">Mission</h3>
-                        <p class="text-on-surface-variant italic">“To empower events with accurate, real-time race timing solutions that enhance participant experience and elevate organizer confidence.”</p>
+                        <p class="text-on-surface-variant italic">“To empower events with accurate, real-time race timing solutions and instant WhatsApp/SMS updates that enhance participant experience and elevate organizer confidence.”</p>
                     </div>
 
-                    <div class="bg-surface-container p-6 rounded-2xl border-l-4 border-secondary">
+                    <div class="bg-surface-container-low p-6 rounded-2xl border-l-4 border-secondary shadow-sm">
                         <h3 class="font-headline-md text-on-surface mb-2">Vision</h3>
-                        <p class="text-on-surface-variant italic">“To be India’s most trusted and innovative race timing partner, powering endurance events nationwide with world-class precision.”</p>
+                        <p class="text-on-surface-variant italic">“To be India’s most trusted and innovative race timing partner, powering endurance events nationwide with world-class precision and flawless venue production.”</p>
                     </div>
                 </div>
 
                 <!-- Right: Image Column -->
                 <div class="relative reveal delay-200">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Technology Circuit Board" class="w-full h-[500px] object-cover rounded-[2.5rem] shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Technology Circuit Board" class="w-full h-[500px] object-cover rounded-[2.5rem] shadow-xl hover-lift">
                     
                     <!-- Floating Description Box -->
                     <div class="absolute -bottom-10 left-6 right-6 md:-left-10 md:right-10 bg-white p-6 rounded-2xl shadow-2xl border border-slate-100 flex gap-4 items-start">
                         <div class="mt-1 bg-primary/10 p-3 rounded-full text-primary shrink-0">
-                            <span class="material-symbols-outlined">edit_square</span>
+                            <span class="material-symbols-outlined">factory</span>
                         </div>
                         <p class="font-body-md text-on-surface-variant text-sm md:text-base leading-relaxed">
-                            Sportifi is built on the belief that sports deserve precision. We specialize in professional timing solutions for endurance sports. Our technology combines accuracy, innovation, and speed.
+                            <strong>Manufacturing Unit:</strong> Time To Result owns a manufacturing unit for customized marathon Dry fit T-shirts, premium zinc/iron finisher Medals, and promotional Caps & Bags.
                         </p>
                     </div>
                 </div>
@@ -373,40 +362,40 @@
         <section class="py-section-gap px-6 max-w-[1280px] mx-auto mt-16">
             <div class="text-center max-w-3xl mx-auto mb-16 reveal">
                 <h2 class="font-headline-lg text-display-lg text-on-surface mb-4">Why Choose Us</h2>
-                <p class="font-body-lg text-on-surface-variant">Sportifi delivers world-class sports timing solutions for marathons, cycling, triathlons, and endurance events. Trusted by organizers and loved by athletes.</p>
+                <p class="font-body-lg text-on-surface-variant">Time To Result delivers world-class sports timing solutions and complete event management. Trusted by organizers and loved by athletes.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                 <!-- Left Column -->
                 <div class="space-y-8">
-                    <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] text-center lg:text-right reveal">
-                        <span class="material-symbols-outlined text-4xl text-primary mb-4 block">volunteer_activism</span>
-                        <h3 class="font-headline-md text-on-surface mb-3">Real-Time Results</h3>
-                        <p class="text-on-surface-variant">Athletes and spectators access live leaderboards, mobile updates, and instant finish times, making events more engaging.</p>
+                    <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm border border-outline-variant/30 text-center lg:text-right reveal hover-lift">
+                        <span class="material-symbols-outlined text-4xl text-primary mb-4 block">bolt</span>
+                        <h3 class="font-headline-md text-on-surface mb-3">Live & Instant Comm.</h3>
+                        <p class="text-on-surface-variant">We update live BIB expo details, allocated BIB Numbers, and instant timing results to participants via SMS, Email, and WhatsApp.</p>
                     </div>
-                    <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] text-center lg:text-right reveal delay-100">
-                        <span class="material-symbols-outlined text-4xl text-primary mb-4 block">settings</span>
-                        <h3 class="font-headline-md text-on-surface mb-3">Scalable for Any Event</h3>
-                        <p class="text-on-surface-variant">From 100 to 100,000+ participants, Sportifi adapts to marathons, triathlons, cycling races, school sports, and mega events.</p>
+                    <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm border border-outline-variant/30 text-center lg:text-right reveal delay-100 hover-lift">
+                        <span class="material-symbols-outlined text-4xl text-primary mb-4 block">festival</span>
+                        <h3 class="font-headline-md text-on-surface mb-3">Full Venue Production</h3>
+                        <p class="text-on-surface-variant">We provide Race day Essentials like Stages, LED Displays, Audio Systems, Tents, Barricades, and Signage Boards for any scale.</p>
                     </div>
                 </div>
 
                 <!-- Center Image -->
                 <div class="hidden lg:block reveal delay-200">
-                    <img src="https://images.unsplash.com/photo-1557685888-2d3621ddf615?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Medals" class="w-full h-[600px] object-cover rounded-[3rem] shadow-xl border-8 border-white">
+                    <img src="https://images.unsplash.com/photo-1557685888-2d3621ddf615?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Medals" class="w-full h-[600px] object-cover rounded-[3rem] shadow-xl border-8 border-white hover-lift">
                 </div>
 
                 <!-- Right Column -->
                 <div class="space-y-8">
-                    <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] text-center lg:text-left reveal">
+                    <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm border border-outline-variant/30 text-center lg:text-left reveal hover-lift">
                         <span class="material-symbols-outlined text-4xl text-secondary mb-4 block">done_all</span>
                         <h3 class="font-headline-md text-on-surface mb-3">Unmatched Accuracy</h3>
-                        <p class="text-on-surface-variant">With advanced RFID chip timing, we ensure 99.9% precision—every split, checkpoint, and finish is tracked flawlessly.</p>
+                        <p class="text-on-surface-variant">With advanced disposable and reusable RFID chip timing, we ensure precision—every split and finish is tracked flawlessly.</p>
                     </div>
-                    <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] text-center lg:text-left reveal delay-100">
-                        <span class="material-symbols-outlined text-4xl text-secondary mb-4 block">headset_mic</span>
-                        <h3 class="font-headline-md text-on-surface mb-3">24/7 Dedicated Support</h3>
-                        <p class="text-on-surface-variant">Our expert team provides full technical and on-ground assistance so organizers can focus on the race, not the stress.</p>
+                    <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm border border-outline-variant/30 text-center lg:text-left reveal delay-100 hover-lift">
+                        <span class="material-symbols-outlined text-4xl text-secondary mb-4 block">campaign</span>
+                        <h3 class="font-headline-md text-on-surface mb-3">Marketing & Execution</h3>
+                        <p class="text-on-surface-variant">Our team handles strategic planning, venue production, route hydration, branding, and comprehensive Social Media Marketing.</p>
                     </div>
                 </div>
             </div>
@@ -417,16 +406,16 @@
             <div class="max-w-[1280px] mx-auto px-6">
                 
                 <div class="text-center max-w-3xl mx-auto mb-20 reveal">
-                    <h2 class="font-headline-lg text-display-lg text-white mb-4">Our World-Class Services</h2>
-                    <p class="font-body-lg text-slate-400">We deliver a comprehensive suite of timing, data, and support solutions for every phase of your event.</p>
+                    <h2 class="font-headline-lg text-display-lg text-white mb-4">Our Services</h2>
+                    <p class="font-body-lg text-slate-400">Everything from timing results to physical manufacturing, providing END to END solutions for your event.</p>
                 </div>
 
                 <div class="space-y-24">
                     <!-- Service 1 -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal hover-lift">
                         <div class="order-2 lg:order-1">
-                            <h2 class="font-headline-lg text-3xl mb-4 text-white">RFID Chip Timing</h2>
-                            <p class="text-slate-400 text-lg leading-relaxed">Accurate, reliable, and scalable RFID technology that tracks every participant from start to finish with precision.</p>
+                            <h2 class="font-headline-lg text-3xl mb-4 text-white">Timing Result & E-Certificate</h2>
+                            <p class="text-slate-400 text-lg leading-relaxed">Instant processing of race data with advanced RFID technology, delivering accurate results and personalized E-Certificates seamlessly.</p>
                         </div>
                         <div class="order-1 lg:order-2">
                             <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="RFID Chips" class="rounded-3xl shadow-2xl">
@@ -434,46 +423,46 @@
                     </div>
 
                     <!-- Service 2 -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal hover-lift">
                         <div>
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Data Analytics" class="rounded-3xl shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cloud Dashboard" class="rounded-3xl shadow-2xl">
                         </div>
                         <div>
-                            <h2 class="font-headline-lg text-3xl mb-4 text-white">Live Results & Leaderboards</h2>
-                            <p class="text-slate-400 text-lg leading-relaxed">Instant race results accessible on mobile and web platforms, giving participants and spectators an engaging experience.</p>
+                            <h2 class="font-headline-lg text-3xl mb-4 text-white">Event Day Planning & Production</h2>
+                            <p class="text-slate-400 text-lg leading-relaxed">We handle strategic planning & execution, venue production, route hydration, and supply essentials like Stages, Arabian Tents, LED Displays, Barricades, and more.</p>
                         </div>
                     </div>
 
                     <!-- Service 3 -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal hover-lift">
                         <div class="order-2 lg:order-1">
-                            <h2 class="font-headline-lg text-3xl mb-4 text-white">Event Day Support</h2>
-                            <p class="text-slate-400 text-lg leading-relaxed">From timing mats and finish line clocks to technical teams and bib distribution, we manage complete on-ground timing support.</p>
+                            <h2 class="font-headline-lg text-3xl mb-4 text-white">Registration & Race Photo</h2>
+                            <p class="text-slate-400 text-lg leading-relaxed">Complete management of participant registration data alongside professional race photography to capture the event's best moments.</p>
                         </div>
                         <div class="order-1 lg:order-2">
-                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cloud Dashboard" class="rounded-3xl shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Event Registration" class="rounded-3xl shadow-2xl">
                         </div>
                     </div>
 
                     <!-- Service 4 -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal hover-lift">
                         <div>
-                            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Secure API & Integrations" class="rounded-3xl shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Expo Management" class="rounded-3xl shadow-2xl">
                         </div>
                         <div>
-                            <h2 class="font-headline-lg text-3xl mb-4 text-white">Integration with Race Apps</h2>
-                            <p class="text-slate-400 text-lg leading-relaxed">Easily integrate with leading race apps and platforms for enhanced participant tracking and sharing.</p>
+                            <h2 class="font-headline-lg text-3xl mb-4 text-white">Event & BIB Expo Management</h2>
+                            <p class="text-slate-400 text-lg leading-relaxed">Flawless organization of your BIB Expo, ensuring participants receive allocated BIB numbers and race day details efficiently and with live communication.</p>
                         </div>
                     </div>
 
                     <!-- Service 5 -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal hover-lift">
                         <div class="order-2 lg:order-1">
-                            <h2 class="font-headline-lg text-3xl mb-4 text-white">Customized Reports & Certificates</h2>
-                            <p class="text-slate-400 text-lg leading-relaxed">Generate detailed post-race reports, rankings, and personalized e-certificates for every participant.</p>
+                            <h2 class="font-headline-lg text-3xl mb-4 text-white">Manufacturing, Marketing & Branding</h2>
+                            <p class="text-slate-400 text-lg leading-relaxed">We manufacture custom Dry-fit T-shirts, zinc/iron medals, and bags. Combined with our Social Media Marketing and physical branding services, we ensure maximum event visibility.</p>
                         </div>
                         <div class="order-1 lg:order-2">
-                            <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Customized Reports" class="rounded-3xl shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Medal Manufacturing" class="rounded-3xl shadow-2xl">
                         </div>
                     </div>
                 </div>
@@ -485,14 +474,14 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
                 
                 <!-- Tech Column -->
-                <div class="bg-surface-container-low p-10 rounded-[2.5rem] reveal">
+                <div class="bg-surface-container-low p-10 rounded-[2.5rem] border border-outline-variant/30 reveal hover-lift">
                     <h2 class="font-headline-lg text-3xl text-on-surface mb-4"><b>Smart Technology That Powers Every Race</b></h2>
-                    <p class="text-on-surface-variant mb-6 text-lg">Sportifi Timing invests in state-of-the-art technology to make every event seamless and accurate:</p>
+                    <p class="text-on-surface-variant mb-6 text-lg">Time To Result invests in state-of-the-art technology to make every event seamless and accurate:</p>
                     
                     <ul class="space-y-4 mb-8">
                         <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-primary shrink-0 mt-1">check_circle</span>
-                            <span class="text-on-surface-variant text-lg">RFID mats & chip-based tracking systems</span>
+                            <span class="text-on-surface-variant text-lg">Advanced disposable BIB Tags & Re-usable Tags</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-primary shrink-0 mt-1">check_circle</span>
@@ -500,30 +489,26 @@
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-primary shrink-0 mt-1">check_circle</span>
-                            <span class="text-on-surface-variant text-lg">Mobile/web platforms for participants and spectators</span>
+                            <span class="text-on-surface-variant text-lg">Live SMS, Email, and WhatsApp integration</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-primary shrink-0 mt-1">check_circle</span>
-                            <span class="text-on-surface-variant text-lg">Real-time alerts and live updates</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-primary shrink-0 mt-1">check_circle</span>
-                            <span class="text-on-surface-variant text-lg">Scalable solutions for 100 to 50,000+ runners</span>
+                            <span class="text-on-surface-variant text-lg">Real-time alerts for BIB expo and race day details</span>
                         </li>
                     </ul>
                     
-                    <p class="font-semibold text-primary text-lg">Our technology ensures zero compromise on accuracy, reliability, or participant experience.</p>
+                    <p class="font-semibold text-primary text-lg">Our technology ensures zero compromise on reliability or participant experience.</p>
                 </div>
 
                 <!-- Events Column -->
-                <div class="p-10 reveal delay-200">
+                <div class="p-10 reveal delay-200 hover-lift border border-transparent hover:border-outline-variant/30 rounded-[2.5rem] transition-colors">
                     <h2 class="font-headline-lg text-3xl text-on-surface mb-4">Events We Time</h2>
-                    <p class="text-on-surface-variant mb-6 text-lg">From grassroots races to large-scale national events, Sportifi Timing is trusted to deliver accuracy and professionalism.</p>
+                    <p class="text-on-surface-variant mb-6 text-lg">From grassroots races to large-scale national events, Time To Result is trusted to deliver precision.</p>
                     
                     <ul class="space-y-4 mb-8">
                         <li class="flex items-center gap-3">
                             <span class="material-symbols-outlined text-secondary shrink-0">check_circle</span>
-                            <span class="text-on-surface-variant text-lg font-medium">City Half Marathons</span>
+                            <span class="text-on-surface-variant text-lg font-medium">City Half Marathons & Stadium Runs</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <span class="material-symbols-outlined text-secondary shrink-0">check_circle</span>
@@ -548,7 +533,7 @@
                     </ul>
                     
                     <div class="bg-secondary-container/10 p-4 rounded-xl border border-secondary/20">
-                        <p class="font-semibold text-secondary">With nationwide coverage, we ensure every event—big or small—gets global-standard timing support.</p>
+                        <p class="font-semibold text-secondary">Based in Chennai, our service helps event organizers to the grand success of the event nationwide.</p>
                     </div>
                 </div>
 
@@ -564,15 +549,11 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="bg-surface p-8 rounded-2xl border border-outline-variant/30 shadow-sm hover:shadow-lg transition-shadow reveal">
+                <div class="bg-surface p-8 rounded-2xl border border-outline-variant/30 shadow-sm hover-lift reveal">
                     <div class="text-secondary mb-4 flex">
-                        <span class="material-symbols-outlined filled">star</span>
-                        <span class="material-symbols-outlined filled">star</span>
-                        <span class="material-symbols-outlined filled">star</span>
-                        <span class="material-symbols-outlined filled">star</span>
-                        <span class="material-symbols-outlined filled">star</span>
+                        <span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span>
                     </div>
-                    <h3 class="font-body-lg text-on-surface mb-6 italic">“Sportifi Timing transformed our marathon experience with flawless accuracy and live results. Our participants loved the instant certificates and leaderboards.”</h3>
+                    <h3 class="font-body-lg text-on-surface mb-6 italic">“Time To Result transformed our marathon experience with flawless accuracy and live WhatsApp updates. Our participants loved the instant certificates and leaderboards.”</h3>
                     <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
                         <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary">ED</div>
                         <p class="font-label-lg text-on-surface-variant uppercase">— Event Director</p>
@@ -580,15 +561,11 @@
                 </div>
 
                 <!-- Testimonial 2 -->
-                <div class="bg-surface p-8 rounded-2xl border border-outline-variant/30 shadow-sm hover:shadow-lg transition-shadow reveal delay-100">
+                <div class="bg-surface p-8 rounded-2xl border border-outline-variant/30 shadow-sm hover-lift reveal delay-100">
                     <div class="text-secondary mb-4 flex">
-                        <span class="material-symbols-outlined filled">star</span>
-                        <span class="material-symbols-outlined filled">star</span>
-                        <span class="material-symbols-outlined filled">star</span>
-                        <span class="material-symbols-outlined filled">star</span>
-                        <span class="material-symbols-outlined filled">star</span>
+                        <span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span>
                     </div>
-                    <h3 class="font-body-lg text-on-surface mb-6 italic">“Reliable, professional, and innovative. Sportifi Timing made our ultra run smooth and stress-free. Their team handled everything seamlessly.”</h3>
+                    <h3 class="font-body-lg text-on-surface mb-6 italic">“Reliable, professional, and innovative. Time To Result's venue production and timing made our ultra run smooth and stress-free. Their team handled everything seamlessly.”</h3>
                     <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
                         <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center font-bold text-secondary">OR</div>
                         <p class="font-label-lg text-on-surface-variant uppercase">— Organizer</p>
@@ -596,15 +573,11 @@
                 </div>
 
                 <!-- Testimonial 3 -->
-                <div class="bg-surface p-8 rounded-2xl border border-outline-variant/30 shadow-sm hover:shadow-lg transition-shadow reveal delay-200">
+                <div class="bg-surface p-8 rounded-2xl border border-outline-variant/30 shadow-sm hover-lift reveal delay-200">
                     <div class="text-secondary mb-4 flex">
-                        <span class="material-symbols-outlined filled">star</span>
-                        <span class="material-symbols-outlined filled">star</span>
-                        <span class="material-symbols-outlined filled">star</span>
-                        <span class="material-symbols-outlined filled">star</span>
-                        <span class="material-symbols-outlined filled">star</span>
+                        <span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span>
                     </div>
-                    <h3 class="font-body-lg text-on-surface mb-6 italic">“The best timing partner we’ve worked with. They bring both technology and heart to every event. Absolute pleasure to work with.”</h3>
+                    <h3 class="font-body-lg text-on-surface mb-6 italic">“The best timing partner we’ve worked with in Chennai. The custom medals and t-shirts were fantastic. Absolute pleasure to work with.”</h3>
                     <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
                         <div class="w-10 h-10 rounded-full bg-tertiary/20 flex items-center justify-center font-bold text-tertiary">CR</div>
                         <p class="font-label-lg text-on-surface-variant uppercase">— Community Race Organizer</p>
@@ -616,22 +589,56 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 w-full py-16">
-        <div class="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div class="flex flex-col items-center md:items-start gap-4">
-                <div class="font-bold text-slate-900 dark:text-white text-xl tracking-tighter uppercase font-headline-lg">SPORTIFI</div>
-                <p class="font-lexend text-xs uppercase tracking-widest text-slate-500 dark:text-slate-500 text-center md:text-left">© 2024 Sportifi Elite Timing. Precision Performance.</p>
+    <footer class="bg-slate-900 pt-20 pb-8 text-slate-300 mt-auto">
+        <div class="max-w-[1280px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div class="flex flex-col gap-6 md:col-span-2">
+                <a href="index.html" class="inline-block hover:opacity-80 transition-opacity">
+                    <!-- LOGO IMAGE -->
+                    <img src="assets/images/logo11 (1).png" alt="Time2Result Logo" class="h-14 w-auto object-contain bg-white rounded-lg p-2" onerror="this.onerror=null; this.src='https://placehold.co/200x60/ffffff/004ac6?text=Time2Result';" />
+                </a>
+                <p class="text-slate-400 leading-relaxed max-w-md">
+                    Time To Result Solutions provides END to END race timing solutions and event management services in Chennai. 
+                </p>
+                <div class="flex flex-col gap-2 mt-2 font-medium">
+                    <p class="flex items-start gap-3"><span class="material-symbols-outlined text-primary">location_on</span><span>1st Floor, 12/1, Sangam School Street,<br/>Venkatapuram, Ambattur, Chennai – 53</span></p>
+                    <p class="flex items-center gap-3 mt-2"><span class="material-symbols-outlined text-primary">mail</span><a href="mailto:info@time2result.com" class="hover:text-white transition-colors">info@time2result.com</a></p>
+                    <p class="flex items-center gap-3"><span class="material-symbols-outlined text-primary opacity-0">mail</span><a href="mailto:time2resultindia@gmail.com" class="hover:text-white transition-colors">time2resultindia@gmail.com</a></p>
+                    <p class="flex items-center gap-3 mt-2"><span class="material-symbols-outlined text-primary">phone</span><a href="tel:+919363024240" class="hover:text-white transition-colors">+91 93630 24240</a> <span class="text-slate-600">/</span> <a href="tel:+918248868900" class="hover:text-white transition-colors">+91 82488 68900</a></p>
+                </div>
             </div>
-            <div class="flex flex-wrap justify-center gap-8">
-                <a class="font-lexend text-xs uppercase tracking-widest text-slate-500 dark:text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Privacy Policy</a>
-                <a class="font-lexend text-xs uppercase tracking-widest text-slate-500 dark:text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Terms of Service</a>
-                <a class="font-lexend text-xs uppercase tracking-widest text-slate-500 dark:text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Cookie Settings</a>
-                <a class="font-lexend text-xs uppercase tracking-widest text-slate-500 dark:text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Support</a>
+            
+            <div>
+                <h4 class="text-white font-bold text-lg mb-6 uppercase tracking-wider">Quick Links</h4>
+                <div class="flex flex-col gap-4 font-medium">
+                    <a class="hover:text-primary transition-colors flex items-center gap-2 group" href="index.html"><span class="material-symbols-outlined text-sm opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">chevron_right</span> Home</a>
+                    <a class="hover:text-primary transition-colors flex items-center gap-2 group" href="events.html"><span class="material-symbols-outlined text-sm opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">chevron_right</span> Registration / Events</a>
+                    <a class="hover:text-primary transition-colors flex items-center gap-2 group" href="results.html"><span class="material-symbols-outlined text-sm opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">chevron_right</span> Results</a>
+                    <a class="hover:text-primary transition-colors flex items-center gap-2 group" href="about.html"><span class="material-symbols-outlined text-sm opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">chevron_right</span> Photos & Contact</a>
+                    <a class="hover:text-primary transition-colors flex items-center gap-2 group" href="services.html"><span class="material-symbols-outlined text-sm opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">chevron_right</span> Privacy Policy</a>
+                </div>
             </div>
-            <div class="flex gap-4">
-                <span class="material-symbols-outlined text-slate-400 hover:text-blue-600 cursor-pointer transition-colors">public</span>
-                <span class="material-symbols-outlined text-slate-400 hover:text-blue-600 cursor-pointer transition-colors">monitoring</span>
-                <span class="material-symbols-outlined text-slate-400 hover:text-blue-600 cursor-pointer transition-colors">share</span>
+
+            <div>
+                <h4 class="text-white font-bold text-lg mb-6 uppercase tracking-wider">Connect With Us</h4>
+                <div class="flex gap-4">
+                    <a href="#" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300" title="Facebook">
+                        <span class="material-symbols-outlined">thumb_up</span>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-green-500 hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300" title="Whatsapp">
+                        <span class="material-symbols-outlined">chat</span>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-pink-600 hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300" title="Instagram">
+                        <span class="material-symbols-outlined">photo_camera</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-[1280px] mx-auto px-6 pt-8 border-t border-slate-800 text-center flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm">© 2024 Time To Result Solutions. All Rights Reserved.</p>
+            <div class="flex gap-6 text-sm">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
             </div>
         </div>
     </footer>
@@ -639,12 +646,6 @@
     <!-- Scroll Reveal JavaScript -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15 
-            };
-
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -652,10 +653,8 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
-
-            const revealElements = document.querySelectorAll('.reveal');
-            revealElements.forEach(el => observer.observe(el));
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         });
     </script>
 </body>
